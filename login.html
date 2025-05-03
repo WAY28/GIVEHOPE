@@ -245,39 +245,41 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem 0.5rem;
-            }
-
-            header div {
-                margin-bottom: 1rem;
-            }
-
             nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
                 gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
             }
 
-            main {
-                margin: 2rem 1rem;
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
+            nav ul.active {
+                display: flex;
             }
 
-            footer ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
+            .mobile-menu-icon {
+                display: block;
+            }
+
+            #latar-belakang {
+                padding: 3rem 1rem;
+            }
+
+            #latar-belakang h2 {
+                font-size: 2rem;
+            }
+
+            .statistik-item h3 {
+                font-size: 2rem;
+            }
+
+            .footer-navigation {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -285,7 +287,7 @@
 <body>
     <!-- Header -->
     <header>
-        <div>
+        <div class="logo">
             <h1>GIVEHOPE</h1>
         </div>
         <nav>
