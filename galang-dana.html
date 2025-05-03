@@ -505,6 +505,7 @@
             <h1>GIVEHOPE</h1>
         </div>
         <nav>
+            <div class="mobile-menu-icon">☰</div>
             <ul>
                 <li><a href="index.html">Beranda</a></li>
                 <li><a href="donasi.html">Donasi</a></li>
@@ -722,5 +723,12 @@
             <p>&copy; 2025 GIVEHOPE. Hak Cipta Dilindungi.</p>
         </div>
     </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.querySelector('.mobile-menu-icon').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
