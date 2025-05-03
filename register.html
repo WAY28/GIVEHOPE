@@ -111,6 +111,13 @@
             width: 100%;
         }
 
+        /* Mobile Menu Icon */
+        .mobile-menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         /* Main Content Styles */
         main {
             max-width: 600px;
@@ -245,19 +252,36 @@
         /* Mobile Responsive */
         @media (max-width: 768px) {
             header {
-                flex-direction: column;
+                flex-direction: row;
                 text-align: center;
                 padding: 1rem 0.5rem;
+                justify-content: space-between;
             }
 
             header div {
-                margin-bottom: 1rem;
+                margin-bottom: 0;
+            }
+
+            .mobile-menu-icon {
+                display: block;
             }
 
             nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
                 gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
+                z-index: 100;
+            }
+
+            nav ul.active {
+                display: flex;
             }
 
             main {
@@ -292,6 +316,7 @@
             <h1>GIVEHOPE</h1>
         </div>
         <nav>
+            <div class="mobile-menu-icon">☰</div>
             <ul>
                 <li><a href="index.html">Beranda</a></li>
                 <li><a href="donasi.html">Donasi</a></li>
@@ -354,5 +379,12 @@
         </nav>
         <p>&copy; 2025 GIVEHOPE. Hak Cipta Dilindungi.</p>
     </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.querySelector('.mobile-menu-icon').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
