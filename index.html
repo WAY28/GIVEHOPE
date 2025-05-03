@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIVEHOPE - Platform Crowdfunding Alat Bantu Disabilitas</title>
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            color: #1e3a8a;
+            margin-bottom: 0.8rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3b82f6;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #1e40af;
+        }
+
+        button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+        }
+
+        button:hover {
+            background-color: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: #1e3a8a;
+            font-weight: 800;
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #4b5563;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover {
+            color: #3b82f6;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Icon */
+        .mobile-menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        /* Background Section */
+        #latar-belakang {
+            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.85)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        #latar-belakang h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #latar-belakang p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        #latar-belakang button {
+            background-color: white;
+            color: #1e3a8a;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        #latar-belakang button:hover {
+            background-color: #f0f9ff;
+        }
+
+        /* Campaign Cards */
+        .campaign-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 2rem;
+        }
+
+        .campaign-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .campaign-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .campaign-card h3 {
+            font-size: 1.2rem;
+            margin: 1rem;
+        }
+
+        .campaign-card p {
+            margin: 0 1rem 1rem;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        .campaign-progress {
+            margin: 0 1rem 1rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .campaign-card button {
+            margin: 0 1rem 1rem;
+            width: calc(100% - 2rem);
+            padding: 10px;
+        }
+
+        /* Statistics Section */
+        #statistik {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #f0f9ff;
+            border-radius: 15px;
+        }
+
+        .statistik-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .statistik-item h3 {
+            font-size: 2.5rem;
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+        }
+
+        .statistik-item p {
+            font-size: 1.1rem;
+            color: #6b7280;
+        }
+
+        /* Testimonial Section */
+        #testimoni {
+            padding: 3rem 0;
+        }
+
+        #testimoni h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimoni-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimoni-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .testimoni-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid #3b82f6;
+        }
+
+        .testimoni-card blockquote {
+            font-style: italic;
+            color: #4b5563;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .testimoni-card blockquote::before {
+            content: '"';
+            font-size: 3rem;
+            color: #dbeafe;
+            position: absolute;
+            top: -1.5rem;
+            left: -0.5rem;
+            opacity: 0.5;
+        }
+
+        .testimoni-author {
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+
+        /* Partner Section */
+        #partner {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #f7f9fc;
+            border-radius: 15px;
+        }
+
+        .partner-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .partner-logo {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .partner-logo img {
+            max-width: 120px;
+            margin-bottom: 1rem;
+        }
+
+        .partner-logo p {
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-navigation {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #3b82f6;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #e5e7eb;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3b82f6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                gap: 1rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-icon {
+                display: block;
+            }
+
+            #latar-belakang {
+                padding: 3rem 1rem;
+            }
+
+            #latar-belakang h2 {
+                font-size: 2rem;
+            }
+
+            .statistik-item h3 {
+                font-size: 2rem;
+            }
+
+            .footer-navigation {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            #latar-belakang h2 {
+                font-size: 1.8rem;
+            }
+
+            #latar-belakang p {
+                font-size: 1rem;
+            }
+
+            .testimoni-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>GIVEHOPE</h1>
+        </div>
+        <nav>
+            <div class="mobile-menu-icon">☰</div>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="donasi.html">Donasi</a></li>
+                <li><a href="galang-dana.html">Galang Dana</a></li>
+                <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                <li><a href="login.html">Masuk</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section Latar Belakang -->
+        <section id="latar-belakang">
+            <h2>Bantu Mereka yang Membutuhkan Alat Bantu Disabilitas</h2>
+            <p>GIVEHOPE adalah platform crowdfunding yang berfokus pada pengadaan alat bantu bagi penyandang disabilitas di Indonesia. Kami mempertemukan para donatur dengan mereka yang membutuhkan bantuan untuk mendapatkan akses terhadap alat bantu yang dapat meningkatkan kualitas hidup mereka.</p>
+            <p>Dengan donasi Anda, kita dapat memberikan harapan dan kemandirian bagi penyandang disabilitas di seluruh Indonesia.</p>
+            <button>Donasi Sekarang</button>
+        </section>
+
+        <!-- Section Campaign Terbaru -->
+        <section id="campaign-terbaru">
+            <h2>Campaign Terbaru</h2>
+            <div class="campaign-list">
+                <!-- Campaign 1 -->
+                <article class="campaign-card">
+                    <img src="/api/placeholder/300/200" alt="Kursi Roda untuk Pak Ahmad">
+                    <h3>Kursi Roda untuk Pak Ahmad</h3>
+                    <p>Bantu Pak Ahmad (65) mendapatkan kursi roda baru agar bisa beraktivitas mandiri setelah stroke.</p>
+                    <div class="campaign-progress">
+                        <p>Target: Rp 2.500.000</p>
+                        <p>Terkumpul: Rp 1.750.000</p>
+                    </div>
+                    <button>Donasi</button>
+                </article>
+
+                <!-- Campaign 2 -->
+                <article class="campaign-card">
+                    <img src="/api/placeholder/300/200" alt="Alat Bantu Dengar untuk Siswa SLB">
+                    <h3>Alat Bantu Dengar untuk Siswa SLB</h3>
+                    <p>10 siswa SLB Tunas Harapan membutuhkan alat bantu dengar untuk mendukung proses belajar mereka.</p>
+                    <div class="campaign-progress">
+                        <p>Target: Rp 15.000.000</p>
+                        <p>Terkumpul: Rp 8.500.000</p>
+                    </div>
+                    <button>Donasi</button>
+                </article>
+
+                <!-- Campaign 3 -->
+                <article class="campaign-card">
+                    <img src="/api/placeholder/300/200" alt="Kaki Palsu untuk Rini">
+                    <h3>Kaki Palsu untuk Rini</h3>
+                    <p>Rini (14) kehilangan kaki kanannya akibat kecelakaan. Bantu dia mendapatkan kaki palsu untuk kembali bersekolah.</p>
+                    <div class="campaign-progress">
+                        <p>Target: Rp 7.000.000</p>
+                        <p>Terkumpul: Rp 3.200.000</p>
+                    </div>
+                    <button>Donasi</button>
+                </article>
+
+                <!-- Campaign 4 -->
+                <article class="campaign-card">
+                    <img src="/api/placeholder/300/200" alt="Walker untuk Lansia di Panti Jompo">
+                    <h3>Walker untuk Lansia di Panti Jompo</h3>
+                    <p>20 lansia di Panti Jompo Kasih Sayang membutuhkan walker untuk membantu mobilitas mereka sehari-hari.</p>
+                    <div class="campaign-progress">
+                        <p>Target: Rp 10.000.000</p>
+                        <p>Terkumpul: Rp 4.500.000</p>
+                    </div>
+                    <button>Donasi</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section Statistik -->
+        <section id="statistik">
+            <h2>Dampak GIVEHOPE</h2>
+            <div class="statistik-container">
+                <div class="statistik-item">
+                    <h3>Rp 1,2 M+</h3>
+                    <p>Total Dana Tersalurkan</p>
+                </div>
+                <div class="statistik-item">
+                    <h3>8.750+</h3>
+                    <p>Total Donasi</p>
+                </div>
+                <div class="statistik-item">
+                    <h3>5.200+</h3>
+                    <p>Total Pengguna</p>
+                </div>
+                <div class="statistik-item">
+                    <h3>320+</h3>
+                    <p>Total Campaign</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Testimoni -->
+        <section id="testimoni">
+            <h2>Apa Kata Mereka</h2>
+            <div class="testimoni-container">
+                <!-- Testimoni 1 -->
+                <article class="testimoni-card">
+                    <img src="/api/placeholder/100/100" alt="Foto Budi">
+                    <blockquote>
+                        "Berkat bantuan dari para donatur di GIVEHOPE, anak saya akhirnya bisa mendapatkan alat bantu dengar. Kini dia bisa bersekolah dengan lebih baik dan bermain bersama teman-temannya."
+                    </blockquote>
+                    <p class="testimoni-author">- Budi, Ayah dari penerima donasi</p>
+                </article>
+
+                <!-- Testimoni 2 -->
+                <article class="testimoni-card">
+                    <img src="/api/placeholder/100/100" alt="Foto Siti">
+                    <blockquote>
+                        "Sebagai donatur, saya merasa terbantu dengan adanya platform GIVEHOPE. Saya bisa dengan mudah memilih campaign yang ingin saya dukung dan melihat perkembangan secara transparan."
+                    </blockquote>
+                    <p class="testimoni-author">- Siti, Donatur</p>
+                </article>
+
+                <!-- Testimoni 3 -->
+                <article class="testimoni-card">
+                    <img src="/api/placeholder/100/100" alt="Foto Yayasan Kasih">
+                    <blockquote>
+                        "GIVEHOPE telah membantu yayasan kami mengumpulkan dana untuk pengadaan 15 kursi roda bagi anak-anak penyandang disabilitas. Prosesnya mudah dan transparan."
+                    </blockquote>
+                    <p class="testimoni-author">- Yayasan Kasih Anak Indonesia</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section Partner -->
+        <section id="partner">
+            <h2>Partner Kami</h2>
+            <div class="partner-container">
+                <div class="partner-logo">
+                    <img src="/api/placeholder/150/80" alt="Logo RS Harapan Bunda">
+                    <p>RS Harapan Bunda</p>
+                </div>
+                <div class="partner-logo">
+                    <img src="/api/placeholder/150/80" alt="Logo Yayasan Peduli Disabilitas">
+                    <p>Yayasan Peduli Disabilitas</p>
+                </div>
+                <div class="partner-logo">
+                    <img src="/api/placeholder/150/80" alt="Logo PT Alat Kesehatan Indonesia">
+                    <p>PT Alat Kesehatan Indonesia</p>
+                </div>
+                <div class="partner-logo">
+                    <img src="/api/placeholder/150/80" alt="Logo Bank Nusantara">
+                    <p>Bank Nusantara</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-navigation">
+            <div class="footer-links">
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="donasi.html">Donasi</a></li>
+                    <li><a href="galang-dana.html">Galang Dana</a></li>
+                    <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Layanan</h3>
+                <ul>
+                    <li><a href="#">Cara Berdonasi</a></li>
+                    <li><a href="#">Cara Galang Dana</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Kontak</h3>
+                <ul>
+                    <li>Email: info@givehope.id</li>
+                    <li>Telepon: 021-12345678</li>
+                    <li>Alamat: Jl. Harapan No. 123, Jakarta</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GIVEHOPE. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.querySelector('.mobile-menu-icon').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

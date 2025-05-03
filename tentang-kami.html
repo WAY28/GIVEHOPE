@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - GiveHope</title>
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f9fc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #1e3a8a;
+            margin-bottom: 0.8rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #3b82f6;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #2563eb;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3b82f6;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #1e40af;
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        button, input[type="submit"] {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+        }
+
+        button:hover, input[type="submit"]:hover {
+            background-color: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo h1 {
+            color: #1e3a8a;
+            font-weight: 800;
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+        }
+
+        nav a {
+            color: #4b5563;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover {
+            color: #3b82f6;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Icon */
+        .mobile-menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .about-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .about-article {
+            margin-bottom: 3rem;
+        }
+
+        .about-article:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Hero Section */
+        .hero-about {
+            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.85)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-about h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-about h2:after {
+            background-color: white;
+        }
+
+        .hero-about p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Team Section */
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background-color: #f8fafc;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .team-member-info {
+            padding: 1.5rem;
+        }
+
+        .team-member h4 {
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .team-member p.position {
+            color: #6b7280;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* FAQ Styles */
+        .faq-item {
+            background-color: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item h4 {
+            margin-top: 0;
+            color: #1e3a8a;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-item h4::before {
+            content: '❯';
+            color: #3b82f6;
+            margin-right: 0.5rem;
+            font-size: 1rem;
+            transform: rotate(90deg);
+            display: inline-block;
+        }
+
+        /* Mission & Vision */
+        .vision-mission {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .vision-card, .mission-card {
+            background-color: #f0f9ff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #3b82f6;
+        }
+
+        /* Form Styles */
+        .contact-form {
+            margin-top: 1.5rem;
+            background-color: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4b5563;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #3b82f6;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #3b82f6;
+        }
+
+        .timeline-date {
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-navigation {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #3b82f6;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #e5e7eb;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3b82f6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: #3b82f6;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+                position: relative;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+                text-align: center;
+                align-items: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: center;
+                width: 100%;
+            }
+
+            .mobile-menu-icon {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+
+            nav ul.active {
+                display: flex;
+                padding-top: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            h3 {
+                font-size: 1.4rem;
+            }
+            
+            .about-section {
+                padding: 1.5rem;
+            }
+            
+            .vision-mission {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .timeline {
+                padding-left: 2rem;
+            }
+            
+            .timeline-item::before {
+                left: -2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            .about-section {
+                padding: 1rem;
+            }
+            
+            .faq-item {
+                padding: 1rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .hero-about {
+                padding: 3rem 1rem;
+            }
+            
+            .hero-about h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>GIVEHOPE</h1>
+        </div>
+        <nav>
+            <div class="mobile-menu-icon">☰</div>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="donasi.html">Donasi</a></li>
+                <li><a href="galang-dana.html">Galang Dana</a></li>
+                <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                <li><a href="login.html">Masuk</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-about">
+            <h2>Tentang Kami</h2>
+            <p>GiveHope adalah platform crowdfunding yang berfokus pada pengadaan alat bantu bagi penyandang disabilitas di Indonesia. Kami berkomitmen untuk menciptakan masyarakat yang lebih inklusif dengan membantu penyandang disabilitas mendapatkan alat bantu yang mereka butuhkan.</p>
+        </section>
+
+        <!-- Main Content -->
+        <section class="about-section">
+            <article class="about-article">
+                <h3>Latar Belakang</h3>
+                <p>GiveHope didirikan pada tahun 2023 sebagai platform crowdfunding yang berfokus khusus pada pengadaan alat bantu bagi penyandang disabilitas di Indonesia. Kami percaya bahwa setiap individu berhak mendapatkan akses terhadap alat bantu yang mereka butuhkan untuk meningkatkan kualitas hidup dan kemandirian mereka.</p>
+                <p>Berawal dari kesadaran akan mahalnya biaya alat bantu disabilitas dan sulitnya akses bagi banyak keluarga, GiveHope hadir sebagai jembatan antara para penyandang disabilitas dengan para donatur yang ingin membantu. Platform kami memastikan transparansi dan akuntabilitas dalam setiap donasi yang diberikan.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Januari 2023</div>
+                        <h4>Awal Mula GiveHope</h4>
+                        <p>GiveHope didirikan oleh sekelompok aktivis peduli disabilitas dengan visi menciptakan akses alat bantu yang lebih merata.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Mei 2023</div>
+                        <h4>Peluncuran Platform</h4>
+                        <p>Platform GiveHope secara resmi diluncurkan dengan 5 kampanye awal untuk pengadaan kursi roda dan alat bantu dengar.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">November 2023</div>
+                        <h4>Pencapaian 100 Kampanye</h4>
+                        <p>GiveHope berhasil memfasilitasi 100 kampanye penggalangan dana dengan total dana tersalurkan mencapai Rp 500 juta.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Januari 2024</div>
+                        <h4>Ekspansi ke Seluruh Indonesia</h4>
+                        <p>GiveHope memperluas jangkauan layanan ke seluruh wilayah Indonesia dengan menjalin kerjasama dengan berbagai organisasi lokal.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="about-article">
+                <h3>Visi & Misi</h3>
+                <div class="vision-mission">
+                    <div class="vision-card">
+                        <h4>Visi</h4>
+                        <p>Menciptakan masyarakat inklusif di mana setiap penyandang disabilitas memiliki akses terhadap alat bantu yang mereka butuhkan untuk menjalani hidup secara mandiri dan bermartabat.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h4>Misi</h4>
+                        <ul>
+                            <li>Membangun platform crowdfunding yang aman, transparan, dan mudah diakses</li>
+                            <li>Menghubungkan penyandang disabilitas dengan para donatur yang berempati</li>
+                            <li>Meningkatkan kesadaran masyarakat tentang pentingnya alat bantu bagi penyandang disabilitas</li>
+                            <li>Mendorong inovasi dalam pengembangan alat bantu yang terjangkau dan berkualitas</li>
+                            <li>Berkolaborasi dengan berbagai pihak untuk menciptakan ekosistem dukungan yang berkelanjutan</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <article class="about-article">
+                <h3>Tim Kami</h3>
+                <div class="team-container">
+                    <div class="team-member">
+                        <img src="/api/placeholder/250/250" alt="Foto Direktur">
+                        <div class="team-member-info">
+                            <h4>Ahmad Rizki</h4>
+                            <p class="position">Direktur</p>
+                            <p>Mantan aktivis disabilitas dengan pengalaman 10 tahun dalam advokasi hak-hak penyandang disabilitas.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/250/250" alt="Foto Manager Program">
+                        <div class="team-member-info">
+                            <h4>Siti Nurhayati</h4>
+                            <p class="position">Manager Program</p>
+                            <p>Berpengalaman dalam manajemen program sosial dengan fokus pada inklusi dan aksesibilitas.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/250/250" alt="Foto Tech Lead">
+                        <div class="team-member-info">
+                            <h4>Budi Santoso</h4>
+                            <p class="position">Tech Lead</p>
+                            <p>Developer dengan passion untuk teknologi aksesibel dan solusi digital untuk masalah sosial.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/250/250" alt="Foto Community Manager">
+                        <div class="team-member-info">
+                            <h4>Dewi Anggraini</h4>
+                            <p class="position">Community Manager</p>
+                            <p>Spesialis komunikasi dengan pengalaman dalam membangun komunitas dan relasi publik.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="about-article">
+                <h3>FAQ (Pertanyaan Umum)</h3>
+                <div class="faq-item">
+                    <h4>Bagaimana cara kerja platform GiveHope?</h4>
+                    <p>GiveHope mempertemukan penyandang disabilitas yang membutuhkan alat bantu dengan para donatur. Penerima manfaat dapat membuat kampanye penggalangan dana dengan verifikasi kebutuhan, kemudian donatur dapat memberikan donasi melalui platform kami. Setelah dana terkumpul, GiveHope akan memfasilitasi pembelian alat bantu dan memastikan alat tersebut sampai ke penerima yang tepat.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Berapa persen biaya administrasi yang diambil GiveHope?</h4>
+                    <p>GiveHope mengambil 5% dari total donasi untuk biaya operasional platform. Kami memastikan 95% dana yang terkumpul digunakan sepenuhnya untuk pengadaan alat bantu disabilitas sesuai kebutuhan penerima manfaat.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Bagaimana GiveHope memastikan transparansi penggunaan dana?</h4>
+                    <p>Setiap kampanye di GiveHope dilengkapi dengan laporan penggunaan dana yang dapat diakses oleh seluruh donatur. Kami mendokumentasikan proses pembelian alat bantu dan penyerahannya kepada penerima manfaat. Donatur juga akan menerima update berkala mengenai dampak dari donasi yang mereka berikan.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Siapa yang bisa mengajukan kampanye penggalangan dana?</h4>
+                    <p>Kampanye dapat diajukan oleh penyandang disabilitas, keluarga, institusi pendidikan, yayasan, atau organisasi yang fokus pada disabilitas. Setiap pengajuan akan melalui proses verifikasi untuk memastikan keabsahan kebutuhan.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Bagaimana jika dana yang terkumpul melebihi target?</h4>
+                    <p>Jika dana yang terkumpul melebihi target, kelebihan dana akan digunakan untuk meningkatkan kualitas alat bantu, membeli alat penunjang tambahan, atau dengan persetujuan donatur, dialihkan ke kampanye serupa yang membutuhkan.</p>
+                </div>
+            </article>
+
+            <article class="about-article">
+                <h3>Kontak Kami</h3>
+                <p>Kami siap membantu Anda dengan pertanyaan, saran, atau kebutuhan bantuan. Silakan hubungi tim kami melalui:</p>
+                <p>Email: info@givehope.id</p>
+                <p>Telepon: (021) 1234-5678</p>
+                <p>Alamat: Jl. Harapan Baru No. 45, Jakarta Selatan</p>
+
+                <div class="social-icons">
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="#" class="social-icon">IG</a>
+                    <a href="#" class="social-icon">TW</a>
+                    <a href="#" class="social-icon">YT</a>
+                </div>
+
+                <form class="contact-form">
+                    <h4>Formulir Kontak</h4>
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap:</label>
+                        <input type="text" id="nama" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subjek">Subjek:</label>
+                        <input type="text" id="subjek" name="subjek" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesan">Pesan:</label>
+                        <textarea id="pesan" name="pesan" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Kirim Pesan</button>
+                </form>
+            </article>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-navigation">
+            <div class="footer-links">
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="donasi.html">Donasi</a></li>
+                    <li><a href="galang-dana.html">Galang Dana</a></li>
+                    <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Layanan</h3>
+                <ul>
+                    <li><a href="#">Cara Berdonasi</a></li>
+                    <li><a href="#">Cara Galang Dana</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Kontak</h3>
+                <ul>
+                    <li>Email: info@givehope.id</li>
+                    <li>Telepon: 021-12345678</li>
+                    <li>Alamat: Jl. Harapan No. 123, Jakarta</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GIVEHOPE. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.querySelector('.mobile-menu-icon').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
