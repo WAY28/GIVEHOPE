@@ -115,28 +115,13 @@
 
         /* Main Content Styles */
         main {
-            max-width: 500px;
-            margin: 3rem auto;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
         }
 
         section {
-            padding: 1rem;
-        }
-
-        section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        section p {
-            text-align: center;
-            color: #6b7280;
-            margin-bottom: 2rem;
+            margin-bottom: 4rem;
         }
 
         /* Form Styles */
@@ -204,38 +189,57 @@
         footer {
             background-color: #1e3a8a;
             color: white;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
+            padding: 3rem 1rem;
         }
 
-        footer nav {
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
+        .footer-navigation {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        footer ul {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
+        .footer-links h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #3b82f6;
+        }
+
+        .footer-links ul {
             list-style: none;
         }
 
-        footer a {
-            color: #e5e7eb;
+        .footer-links li {
+            margin-bottom: 0.8rem;
         }
 
-        footer a:hover {
+        .footer-links a {
+            color: #e5e7eb;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
             color: #3b82f6;
         }
 
-        footer p {
+        .footer-bottom {
             text-align: center;
-            color: #e5e7eb;
-            font-size: 0.9rem;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1.5rem;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -328,17 +332,37 @@
 
     <!-- Footer -->
     <footer>
-        <nav>
-            <ul>
-                <li><a href="index.html">Beranda</a></li>
-                <li><a href="donasi.html">Donasi</a></li>
-                <li><a href="galang-dana.html">Galang Dana</a></li>
-                <li><a href="tentang-kami.html">Tentang Kami</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="register.html">Register</a></li>
-            </ul>
-        </nav>
-        <p>&copy; 2025 GIVEHOPE. Hak Cipta Dilindungi.</p>
+        <div class="footer-navigation">
+            <div class="footer-links">
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="donasi.html">Donasi</a></li>
+                    <li><a href="galang-dana.html">Galang Dana</a></li>
+                    <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Layanan</h3>
+                <ul>
+                    <li><a href="#">Cara Berdonasi</a></li>
+                    <li><a href="#">Cara Galang Dana</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Kontak</h3>
+                <ul>
+                    <li>Email: info@givehope.id</li>
+                    <li>Telepon: 021-12345678</li>
+                    <li>Alamat: Jl. Harapan No. 123, Jakarta</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GIVEHOPE. Hak Cipta Dilindungi.</p>
+        </div>
     </footer>
 
     <script>
