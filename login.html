@@ -111,6 +111,13 @@
             width: 100%;
         }
 
+        /* Mobile Menu Icon */
+        .mobile-menu-icon {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         /* Main Content Styles */
         main {
             max-width: 500px;
@@ -283,6 +290,7 @@
             <h1>GIVEHOPE</h1>
         </div>
         <nav>
+            <div class="mobile-menu-icon">☰</div>
             <ul>
                 <li><a href="index.html">Beranda</a></li>
                 <li><a href="donasi.html">Donasi</a></li>
@@ -337,5 +345,12 @@
         </nav>
         <p>&copy; 2025 GIVEHOPE. Hak Cipta Dilindungi.</p>
     </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.querySelector('.mobile-menu-icon').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
