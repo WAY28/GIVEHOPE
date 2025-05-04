@@ -128,28 +128,17 @@
             margin-bottom: 4rem;
         }
 
-        /* Background Section */
-        #latar-belakang {
-            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.85)), url('/api/placeholder/1200/600');
+       /* Background Section */
+       #latar-belakang {
+            background: url('https://uploads-ssl.webflow.com/65be6a376bbf5baed8906c5e/65be6a376bbf5baed8906e9d_give-hope-bg.jpg');
             background-size: cover;
             background-position: center;
+            position: relative;
             color: white;
             padding: 5rem 2rem;
             border-radius: 15px;
             text-align: center;
             margin-top: 2rem;
-        }
-
-        #latar-belakang h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        #latar-belakang p {
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-            font-size: 1.1rem;
         }
 
         #latar-belakang button {
@@ -159,8 +148,21 @@
             margin-top: 1rem;
         }
 
-        #latar-belakang button:hover {
-            background-color: #f0f9ff;
+        #latar-belakang h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            height: auto;
+        }
+
+        #latar-belakang button {
+            background-color: white;
+            color: #1e3a8a;
+            font-size: 1.1rem;
+            padding: 12px 28px;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            height: 50px;
         }
 
         /* Campaign Cards */
@@ -472,9 +474,8 @@
     <main>
         <!-- Section Latar Belakang -->
         <section id="latar-belakang">
+            <img src="GIVE HOPE.png" alt="Background">
             <h2>Bantu Mereka yang Membutuhkan Alat Bantu Disabilitas</h2>
-            <p>GIVEHOPE adalah platform crowdfunding yang berfokus pada pengadaan alat bantu bagi penyandang disabilitas di Indonesia. Kami mempertemukan para donatur dengan mereka yang membutuhkan bantuan untuk mendapatkan akses terhadap alat bantu yang dapat meningkatkan kualitas hidup mereka.</p>
-            <p>Dengan donasi Anda, kita dapat memberikan harapan dan kemandirian bagi penyandang disabilitas di seluruh Indonesia.</p>
             <button>Donasi Sekarang</button>
         </section>
 
@@ -482,17 +483,6 @@
         <section id="campaign-terbaru">
             <h2>Campaign Terbaru</h2>
             <div class="campaign-list">
-                <!-- Campaign 1 -->
-                <article class="campaign-card">
-                    <img src="/api/placeholder/300/200" alt="Kursi Roda untuk Pak Ahmad">
-                    <h3>Kursi Roda untuk Pak Ahmad</h3>
-                    <p>Bantu Pak Ahmad (65) mendapatkan kursi roda baru agar bisa beraktivitas mandiri setelah stroke.</p>
-                    <div class="campaign-progress">
-                        <p>Target: Rp 2.500.000</p>
-                        <p>Terkumpul: Rp 1.750.000</p>
-                    </div>
-                    <button>Donasi</button>
-                </article>
 
                 <!-- Campaign 2 -->
                 <article class="campaign-card">
